@@ -153,10 +153,10 @@ bar {
         ## Show status text in light blue color
         #        statusline #ADD8E6
         #}
-        status_command /home/gunnar/bin/conky-i3bar -c /home/gunnar/.conkyrc
+        status_command $HOME/bin/conky-i3bar -c $HOME/.conkyrc
         position top
 }
-# browser pop-ups
+# pop-ups
 for_window [window_role="pop-up"] floating enable
 for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePeer"] floating enable
 # bar {
@@ -165,7 +165,7 @@ for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePe
 #         # Show status text in light blue color
 #                 statusline #ADD8E6
 #         }
-#         status_command conky -c /home/gunnar/.conkyrc
+#         status_command conky -c $HOME/.conkyrc
 #         position top
 # }
 
@@ -211,7 +211,7 @@ exec vivaldi
 exec --no-startup-id i3-msg 'workspace 2; exec skype; workspace 1'
 #exec --no-startup-id i3-msg 'workspace 2; exec eclipse; workspace 1'
 #exec ~/.dropbox-dist/dropboxd
-exec feh --bg-scale /home/gunnar/Wallpapers/wallpaper
+exec feh --bg-scale $HOME/Wallpapers/wallpaper
 exec xautolock -time 10 -locker "i3lock -c 000000 -i $HOME/Wallpapers/wallpaper"
 exec --no-startup-id nm-applet
 exec --no-startup-id "sleep 1 && setxkbmap is"
