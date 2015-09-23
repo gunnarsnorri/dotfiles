@@ -42,7 +42,7 @@ TEXT
 # Ethernet status
 {"full_text" : "${if_up eth0}eth0 ${addr eth0} ${endif}" , "color" : "\#ffffff" },
 # Wireless status
-{"full_text" : "${if_up wlan0}wlan0 ${addr wlan0} ${wireless_link_bar wlan0} ${endif}" , "color" : "\#ffffff" },
+{"full_text" : "${if_up wlan0}wlan0 ${addr wlan0} ${wireless_link_bar wlan0} ${endif} ${if_up wlan2}wlan2 ${addr wlan2} ${wireless_link_bar wlan2} ${endif}" , "color" : "\#ffffff" },
 # RAM in use
 {"full_text" : "RAM ${memperc}%" , "color" : "\#ffffff" },
 # Battery
@@ -52,5 +52,5 @@ TEXT
 # Volume %
 #Vol: ${mixer}
 {"full_text" : "♪ ${exec pactl list sinks | grep "Volume: 0"| tail -n 1 | awk '{print substr($3, 1, index($3, "%") - 1)}'}%" , "color" : "\#ffffff" },
-{"full_text" : "${time %a %d.%b.%Y %H:%M}" , "color" : "\#ffffff" }
+{"full_text" : "${time %a %d.%b.%Y %H:%M:%S}" , "color" : "\#ffffff" }
 ],
