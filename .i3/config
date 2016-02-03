@@ -211,8 +211,8 @@ exec vivaldi
 exec --no-startup-id i3-msg 'workspace 2; exec skype; workspace 1'
 #exec --no-startup-id i3-msg 'workspace 2; exec eclipse; workspace 1'
 #exec ~/.dropbox-dist/dropboxd
-exec feh --bg-scale $HOME/Wallpapers/wallpaper
+exec feh --bg-max $HOME/Wallpapers/wallpaper
 exec xautolock -time 10 -locker "i3lock -c 000000 -i $HOME/Wallpapers/wallpaper"
 exec --no-startup-id nm-applet
 exec --no-startup-id "sleep 1 && setxkbmap is"
-exec fluxgui
+exec redshift-gtk
