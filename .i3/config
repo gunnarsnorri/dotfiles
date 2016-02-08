@@ -148,7 +148,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	output LVDS
+	output LVDS1
         #colors {
         ## Show status text in light blue color
         #        statusline #ADD8E6
@@ -159,15 +159,11 @@ bar {
 # pop-ups
 for_window [window_role="pop-up"] floating enable
 for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePeer"] floating enable
-# bar {
-# 	output DFP1
-#         colors {
-#         # Show status text in light blue color
-#                 statusline #ADD8E6
-#         }
-#         status_command conky -c $HOME/.conkyrc
-#         position top
-# }
+bar {
+	output DP2
+        status_command $HOME/bin/conky-i3bar -c $HOME/.conkyrc
+        position top
+}
 
         
 #CUSTOM KEYBINDINGS
@@ -175,9 +171,12 @@ for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePe
 bindsym $MOD+b exec vivaldi
 #bindsym $MOD+shift+b exec eclipse
 bindsym Mod1+Ctrl+l  exec i3lock -c 000000
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle && killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 -- +2% && killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -- -2% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +2% && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -2% && killall -SIGUSR1 i3status
+bindsym $MOD+F1 exec --no-startup-id pactl set-sink-mute 0 toggle && killall -SIGUSR1 i3status
+bindsym $MOD+F2 exec --no-startup-id pactl set-sink-volume 0 -- -2% && killall -SIGUSR1 i3status
+bindsym $MOD+F3 exec --no-startup-id pactl set-sink-volume 0 -- +2% && killall -SIGUSR1 i3status
 bindsym XF86MonBrightnessUp exec --no-startup-id brightness 1
 bindsym XF86MonBrightnessDown exec --no-startup-id brightness 0
 bindsym Mod1+Tab focus right
@@ -208,11 +207,11 @@ bindsym $mod+Ctrl+q mode "$mode_system"
 # AUTOSTART
 
 exec vivaldi
-exec --no-startup-id i3-msg 'workspace 2; exec skype; workspace 1'
 #exec --no-startup-id i3-msg 'workspace 2; exec eclipse; workspace 1'
 #exec ~/.dropbox-dist/dropboxd
 exec feh --bg-scale $HOME/Wallpapers/wallpaper
 exec xautolock -time 10 -locker "i3lock -c 000000 -i $HOME/Wallpapers/wallpaper"
 exec --no-startup-id nm-applet
 exec --no-startup-id "sleep 1 && setxkbmap is"
-exec fluxgui
+exec --no-startup-id gajim
+exec --no-startup-id thunderbird
