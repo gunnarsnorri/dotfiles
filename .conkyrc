@@ -48,7 +48,7 @@ TEXT
 # Battery
 {"full_text" : "Battery: ${if_match ${battery_percent BAT0} <= 15}${blink ${battery_percent BAT0}}${endif} ${if_match ${battery_percent BAT0} > 15}${battery_percent BAT0}${endif}% remaining" , "color" : "${if_match ${battery_percent BAT0} <= 9}\#ff0000${endif}${if_match ${battery_percent BAT0} >= 10}${if_match ${battery_percent BAT0} <=49}\#ff9900${endif}${endif}${if_match ${battery_percent BAT0} >= 50}${if_match ${battery_percent BAT0} <=79}\#ffff00${endif}${endif}${if_match ${battery_percent BAT0} >= 80}${if_match ${battery_percent BAT0} <=99}\#00ff00${endif}${endif}${if_match ${battery_percent BAT0} >= 100}\#ffffff${endif} %" },
 # Weather temperature
-{"full_text" : "${exec weather --headers="Temperature" -qm esgp | awk '/Temperature/ {print $2}'}C ${exec weather --headers="Weather" -qm esgp | awk '/Weather/ {print $2}'}, ${exec weather --headers="Sky conditions" -qm esgp | awk '/Sky conditions/ {print $3 " " $4}'} ${exec weather --headers="Wind" -qm esgp | awk '{$8=$8"/3.6"} /Wind/ {print $8}' | bc}m/s" , "color" : "\#ffffff" },
+{"full_text" : "${exec weather --headers="Temperature" -qm fips3104791169 | awk '/Temperature/ {print $2}'}C ${exec weather --headers="Weather" -qm fips3104791169 | awk '/Weather/ {print $2}'}, ${exec weather --headers="Sky conditions" -qm fips3104791169 | awk '/Sky conditions/ {print $3 " " $4}'} ${exec weather --headers="Wind" -qm fips3104791169 | awk '{$8=$8"/3.6"} /Wind/ {print $8}' | bc}m/s" , "color" : "\#ffffff" },
 # Volume %
 #Vol: ${mixer}
 {"full_text" : "♪ ${exec pactl list sinks | grep "Volume: 0"| tail -n 1 | awk '{print substr($3, 1, index($3, "%") - 1)}'}%" , "color" : "\#ffffff" },

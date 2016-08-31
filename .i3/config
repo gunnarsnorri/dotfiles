@@ -160,7 +160,7 @@ bar {
 for_window [window_role="pop-up"] floating enable
 for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePeer"] floating enable
 bar {
-	output DP2
+	output DP1
         status_command $HOME/bin/conky-i3bar -c $HOME/.conkyrc
         position top
 }
@@ -184,9 +184,10 @@ bindsym Mod1+Shift+Tab focus left
 bindsym $MOD+u exec setxkbmap us
 bindsym $MOD+i exec setxkbmap is
 bindsym Menu exec nocommand
+bindsym $MOD+Caps_Lock exec --no-startup-id ~gunnar/bin/setmouse
 # Printscreen
 bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
-bindsym Mod1+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym $MOD+Print exec crop_gm.py
 
 
 #BOOT
@@ -213,5 +214,6 @@ exec feh --bg-max $HOME/Wallpapers/wallpaper
 exec xautolock -time 10 -locker "i3lock -c 000000 -i $HOME/Wallpapers/wallpaper"
 exec --no-startup-id nm-applet
 exec --no-startup-id "sleep 1 && setxkbmap is"
-exec --no-startup-id gajim
-exec --no-startup-id thunderbird
+#exec --no-startup-id i3-msg 'workspace 2; exec eclipse; workspace 1'
+# exec --no-startup-id gajim
+exec --no-startup-id $HOME/bin/find-dbus.sh

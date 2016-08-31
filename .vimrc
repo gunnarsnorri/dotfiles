@@ -48,3 +48,5 @@ set expandtab       " Expand TABs to spaces.
 
 " arduino syntax
 map <leader>ai migg=G'i
+
+:let g:pymode_rope = 0
