@@ -33,6 +33,8 @@ if has("autocmd")
     au BufRead,BufNewFile *.ino set filetype=arduino
     " Use actual tab chars in Makefiles.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    autocmd FileType cpp,c,cxx,h,hpp,python,sh  setlocal cc=120
+    autocmd BufWritePre * StripWhitespace
 
 endif
 
@@ -50,3 +52,6 @@ set expandtab       " Expand TABs to spaces.
 map <leader>ai migg=G'i
 
 :let g:pymode_rope = 0
+
+map <leader>y "*y
+map <leader>p "*p
