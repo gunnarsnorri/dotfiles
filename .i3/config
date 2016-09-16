@@ -147,30 +147,25 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	output LVDS1
-        #colors {
-        ## Show status text in light blue color
-        #        statusline #ADD8E6
-        #}
         status_command i3blocks
         position top
+        font pango:DejaVu Sans Mono, Awesome 12
 }
 bar {
 	output HDMI1
-        #colors {
-        ## Show status text in light blue color
-        #        statusline #ADD8E6
-        #}
         status_command i3blocks
         position top
+        font pango:DejaVu Sans Mono, Awesome 12
 }
-# pop-ups
-for_window [window_role="pop-up"] floating enable
-for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePeer"] floating enable
 bar {
 	output DP2
         status_command i3blocks
         position top
+        font pango:DejaVu Sans Mono, Awesome 12
 }
+# pop-ups
+for_window [window_role="pop-up"] floating enable
+for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePeer"] floating enable
 
 
 #CUSTOM KEYBINDINGS
