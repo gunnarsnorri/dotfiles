@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/gunsno/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -51,7 +51,7 @@ ZSH_THEME="tjkirch"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git svn-fast-info)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -84,30 +84,30 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set up ssh-agent
-SSH_ENV="$HOME/.ssh/environment"
-
-function start_agent {
-echo "Initializing new SSH agent..."
-/usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-echo succeeded
-chmod 600 "${SSH_ENV}"
-. "${SSH_ENV}" > /dev/null
-/usr/bin/ssh-add;
-}
-
-# Source SSH settings, if applicable
-if [ -f "${SSH_ENV}" ]; then
-. "${SSH_ENV}" > /dev/null
-#ps ${SSH_AGENT_PID} doesn't work under cywgin
-ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-start_agent;
-}
-else
-start_agent;
-fi
-
-source ~/bin
+# # Set up ssh-agent
+# SSH_ENV="$HOME/.ssh/environment"
+# 
+# function start_agent {
+# echo "Initializing new SSH agent..."
+# /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+# echo succeeded
+# chmod 600 "${SSH_ENV}"
+# . "${SSH_ENV}" > /dev/null
+# /usr/bin/ssh-add;
+# }
+# 
+# # Source SSH settings, if applicable
+# if [ -f "${SSH_ENV}" ]; then
+# . "${SSH_ENV}" > /dev/null
+# #ps ${SSH_AGENT_PID} doesn't work under cywgin
+# ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+# start_agent;
+# }
+# else
+# start_agent;
+# fi
+# 
+# source ~/bin
 
 # VIRTUALENV
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
