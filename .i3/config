@@ -215,3 +215,4 @@ exec xautolock -time 10 -locker "i3lock -c 000000 -i $HOME/Wallpapers/wallpaper"
 exec --no-startup-id nm-applet
 exec --no-startup-id "sleep 1 && setxkbmap is"
 exec --no-startup-id gajim
+exec --no-startup-id thunderbird
