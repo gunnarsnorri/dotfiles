@@ -10,6 +10,7 @@ fi
 ME=$(who | awk '{print $1}')
 
 # BASICS
+mkdir -p $HOME/tmp $HOME/bin
 echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" > /etc/apt/sources.list.d/i3.list
 apt update
 apt --allow-unauthenticated install sur5r-keyring
@@ -36,7 +37,8 @@ su -c "ln -s $HOME/dotfiles/.i3 $HOME/.i3" $ME
 su -c "ln -s $HOME/dotfiles/.i3blocks.conf $HOME/.i3blocks.conf" $ME
 
 apt install i3 -y
-apt install fonts-font-awesome
+apt install fonts-font-awesome -y
+apt install xautolock -y
 # Oh My Zsh
 apt install zsh -y
 chsh -s /bin/zsh $ME
@@ -51,11 +53,13 @@ pushd $HOME/i3blocks/blocks
 for fullpath in /usr/share/i3blocks/*; do
     su -c "ln -s $fullpath orig-$(basename $fullpath)" $ME
 done
+su -c "wget https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/volume-pulseaudio/volume-pulseaudio" $ME
+chmod a+x volume-pulseaudio
 popd
 
 
 # PIP
-apt install python-pip
+apt install python-pip -y
 pip install --upgrade pip
 pip install virtualenv virtualenvwrapper
 
@@ -63,10 +67,10 @@ pip install virtualenv virtualenvwrapper
 wget -qO - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://repo.vivaldi.com/stable/deb/ stable main" > /etc/apt/sources.list.d/vivaldi.list
 apt update
-apt install vivaldi-stable
+apt install vivaldi-stable -y
 
 # SSH
-apt install openssh-server
+apt install openssh-server -y
 
 # UFW
 ufw enable
@@ -75,6 +79,6 @@ ufw allow ssh
 
 
 # WORK SPECIFIC
-apt install gajim
+apt install pidgin -y
 
-echo "Now fix NFS, Davmail, mail etc..."
+echo "Now fix NFS, Davmail, mail, xmpp chat etc..."
