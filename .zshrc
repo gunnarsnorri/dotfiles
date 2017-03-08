@@ -110,4 +110,4 @@ fi
 source ~/bin
 
 # VIRTUALENV
-# source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
