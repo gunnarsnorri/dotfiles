@@ -76,6 +76,9 @@ apt install openssh-server -y
 ufw enable
 ufw allow ssh
 
+# OTHER
+apt install gimp scrot -y
+
 
 
 # WORK SPECIFIC
