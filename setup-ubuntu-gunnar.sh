@@ -37,7 +37,6 @@ su -c "ln -s $HOME/dotfiles/.i3 $HOME/.i3" $ME
 su -c "ln -s $HOME/dotfiles/.i3blocks.conf $HOME/.i3blocks.conf" $ME
 
 apt install i3 -y
-apt install fonts-font-awesome -y
 apt install xautolock -y
 # Oh My Zsh
 apt install zsh -y
