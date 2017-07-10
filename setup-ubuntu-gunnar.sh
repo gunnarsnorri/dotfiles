@@ -10,7 +10,7 @@ fi
 ME=$(who | awk '{print $1}')
 
 # BASICS
-mkdir -p $HOME/tmp $HOME/bin
+su -c "mkdir -p $HOME/tmp $HOME/bin" $ME
 echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" > /etc/apt/sources.list.d/i3.list
 apt update
 apt --allow-unauthenticated install sur5r-keyring
@@ -18,8 +18,12 @@ apt update
 apt dist-upgrade -y
 apt install vim build-essential cmake python-dev python3-dev -y
 
+# git
+git config --global user.email "gunnar.snorri.ragnarsson@gmail.com"
+git config --global user.name "Gunnar Snorri Ragnarsson"
+
 # vim
-mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+su -c "mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim" $ME
 su -c "git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible" $ME
 su -c "git clone https://github.com/klen/python-mode.git $HOME/.vim/bundle/python-mode" $ME
 su -c "git clone https://github.com/ntpeters/vim-better-whitespace.git ~/.vim/bundle/vim-better-whitespace" $ME
