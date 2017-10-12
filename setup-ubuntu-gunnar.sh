@@ -19,6 +19,7 @@ apt dist-upgrade -y
 apt install vim build-essential cmake python-dev python3-dev -y
 
 # git
+git config --global push.default simple
 git config --global user.email "gunnar.snorri.ragnarsson@gmail.com"
 git config --global user.name "Gunnar Snorri Ragnarsson"
 

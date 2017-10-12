@@ -51,10 +51,14 @@ set expandtab       " Expand TABs to spaces.
 " arduino syntax
 map <leader>ai migg=G'i
 
-:let g:pymode_rope = 0
+let g:pymode_rope = 0
+let g:pymode_python = 'python3'
 
 map <leader>y "*y
 map <leader>p "*p
 
 " YouCompleteMe
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'python': 1
+      \}
 let g:ycm_global_ycm_extra_conf = '/home/gunsno/svn/SMCU/source/.ycm_extra_conf.py'
