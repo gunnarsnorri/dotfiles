@@ -10,8 +10,8 @@ let mapleader=" "
 map <leader>8 :PymodeLintAuto<CR>
 map <leader>k :E<CR>
 map <leader>ma :!make all<CR>
-map <leader>mc :!make canvas<CR>
-map <leader>mp :!make pixi<CR>
+map <leader>M :!make<CR>
+map <leader>mc :!make clean<CR>
 let g:netrw_liststyle=3
 map <leader>" caw "<ESC>pa"<ESC>ee
 map <leader>' caw '<ESC>pa'<ESC>ee

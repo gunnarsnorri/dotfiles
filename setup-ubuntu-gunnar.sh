@@ -25,10 +25,10 @@ git config --global user.name "Gunnar Snorri Ragnarsson"
 
 # vim
 su -c "mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim" $ME
-su -c "git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible" $ME
-su -c "git clone https://github.com/klen/python-mode.git $HOME/.vim/bundle/python-mode" $ME
-su -c "git clone https://github.com/ntpeters/vim-better-whitespace.git ~/.vim/bundle/vim-better-whitespace" $ME
-su -c "git clone https://github.com/Valloric/YouCompleteMe ~/.vim/bundle/YouCompleteMe" $ME
+VIMREPOS=" tpope/vim-sensible klen/python-mode ntpeters/vim-better-whitespace Valloric/YouCompleteMe sukima/xmledit"
+for VIMREPO in VIMREPOS; do
+    su -c "git clone https://github.com/$VIMREPO.git $HOME/.vim/bundle/$(basename $VIMREPO)" $ME
+done
 
 # YCM
 pushd ~/.vim/bundle/YouCompleteMe

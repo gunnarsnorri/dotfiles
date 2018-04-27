@@ -146,19 +146,13 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	output eDP1
+	output DP-1
         status_command i3blocks
         position top
         font pango:DejaVu Sans Mono 14
 }
 bar {
-	output HDMI2
-        status_command i3blocks
-        position top
-        font pango:DejaVu Sans Mono 14
-}
-bar {
-	output DP1
+	output VGA-1
         status_command i3blocks
         position top
         font pango:DejaVu Sans Mono 14
@@ -166,6 +160,7 @@ bar {
 # pop-ups
 for_window [window_role="pop-up"] floating enable
 for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePeer"] floating enable
+# for_window [class="CImg"] floating enable
 
 
 #CUSTOM KEYBINDINGS
@@ -173,12 +168,12 @@ for_window [class="com-mathworks-util-PostVMInit" instance="sun-awt-X11-XFramePe
 bindsym $MOD+b exec vivaldi
 #bindsym $MOD+shift+b exec eclipse
 bindsym Mod1+Ctrl+l  exec i3lock -c 000000
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +2% && pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -2% && pkill -SIGRTMIN+10 i3blocks
-bindsym $MOD+F1 exec --no-startup-id pactl set-sink-mute 1 toggle && pkill -SIGRTMIN+10 i3blocks
-bindsym $MOD+F2 exec --no-startup-id pactl set-sink-volume 1 -2% && pkill -SIGRTMIN+10 i3blocks
-bindsym $MOD+F3 exec --no-startup-id pactl set-sink-volume 1 +2% && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% && pkill -SIGRTMIN+10 i3blocks
+bindsym $MOD+F1 exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -SIGRTMIN+10 i3blocks
+bindsym $MOD+F2 exec --no-startup-id pactl set-sink-volume 0 -2% && pkill -SIGRTMIN+10 i3blocks
+bindsym $MOD+F3 exec --no-startup-id pactl set-sink-volume 0 +2% && pkill -SIGRTMIN+10 i3blocks
 bindsym XF86MonBrightnessUp exec --no-startup-id brightness 1
 bindsym XF86MonBrightnessDown exec --no-startup-id brightness 0
 bindsym Mod1+Tab focus right
@@ -193,11 +188,11 @@ bindsym Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 #BOOT
 set $mode_system System (l) lock, (e) logout, (s) suspend (r) reboot, (Shift+s) shutdown, (Esc) cancel
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -207,10 +202,11 @@ bindsym $mod+Ctrl+q mode "$mode_system"
 
 # AUTOSTART
 
-exec vivaldi
+# exec vivaldi
 exec feh --bg-max $HOME/Wallpapers/wallpaper
-exec xautolock -time 10 -locker "i3lock -c 000000 -i $HOME/Wallpapers/wallpaper"
+exec xautolock -time 10 -locker "i3lock -c 000000"
 exec --no-startup-id nm-applet
 exec --no-startup-id "sleep 1 && setxkbmap is"
-exec --no-startup-id thunderbird
-exec --no-startup-id pidgin
+exec --no-startup-id synergy
+# exec --no-startup-id thunderbird
+# exec --no-startup-id pidgin
