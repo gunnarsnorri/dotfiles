@@ -17,7 +17,7 @@ rm /tmp/keyring.deb
 echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" > /etc/apt/sources.list.d/i3.list
 apt update
 apt dist-upgrade -y
-apt install vim build-essential cmake python-dev python3-dev -y
+apt install vim build-essential cmake python-dev python3-dev curl -y
 
 # git
 git config --global push.default simple
@@ -25,7 +25,7 @@ git config --global user.email "gunnar.snorri.ragnarsson@gmail.com"
 git config --global user.name "Gunnar Snorri Ragnarsson"
 
 # vim
-su -c "mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim" $ME
+su -c "mkdir -p ~/.vim/{autoload,bundle} && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim" $ME
 VIMREPOS="tpope/vim-sensible klen/python-mode ntpeters/vim-better-whitespace Valloric/YouCompleteMe sukima/xmledit"
 for VIMREPO in $VIMREPOS; do
     su -c "git clone https://github.com/$VIMREPO.git $HOME/.vim/bundle/$(basename $VIMREPO)" $ME
