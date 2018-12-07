@@ -17,7 +17,7 @@ rm /tmp/keyring.deb
 echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" > /etc/apt/sources.list.d/i3.list
 apt update
 apt dist-upgrade -y
-apt install vim build-essential cmake python-dev python3-dev curl -y
+apt install vim-gtk3 build-essential cmake python-dev python3-dev python3-pip curl -y
 
 # git
 git config --global push.default simple
@@ -26,10 +26,13 @@ git config --global user.name "Gunnar Snorri Ragnarsson"
 
 # vim
 su -c "mkdir -p ~/.vim/{autoload,bundle} && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim" $ME
-VIMREPOS="tpope/vim-sensible klen/python-mode ntpeters/vim-better-whitespace Valloric/YouCompleteMe sukima/xmledit"
+VIMREPOS="tpope/vim-sensible ntpeters/vim-better-whitespace Valloric/YouCompleteMe sukima/xmledit"
 for VIMREPO in $VIMREPOS; do
     su -c "git clone https://github.com/$VIMREPO.git $HOME/.vim/bundle/$(basename $VIMREPO)" $ME
 done
+
+# Python-mode
+su -c "git clone --recursive https://github.com/python-mode/python-mode $HOME/.vim/bundle/python-mode" $ME
 
 # YCM
 pushd ~/.vim/bundle/YouCompleteMe
@@ -84,9 +87,5 @@ ufw allow ssh
 # OTHER
 apt install gimp scrot -y
 
-
-
-# WORK SPECIFIC
-apt install pidgin -y
 
 echo "Now fix NFS, Davmail, mail, xmpp chat etc..."
