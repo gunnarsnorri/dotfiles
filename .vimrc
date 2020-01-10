@@ -34,6 +34,7 @@ if has("autocmd")
     " Use actual tab chars in Makefiles.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
     autocmd FileType cpp,c,cxx,h,hpp,python,sh  setlocal cc=120
+    autocmd FileType python  setlocal cc=80
     autocmd BufWritePre * StripWhitespace
 
 endif

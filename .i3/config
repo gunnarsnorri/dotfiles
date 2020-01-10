@@ -205,8 +205,9 @@ bindsym $mod+Ctrl+q mode "$mode_system"
 # exec vivaldi
 exec feh --bg-max $HOME/Wallpapers/wallpaper
 exec xautolock -time 10 -locker "i3lock -c 000000"
-exec --no-startup-id nm-applet
 exec --no-startup-id "sleep 1 && setxkbmap is"
+exec --no-startup-id nm-applet
 exec --no-startup-id synergy
+exec --no-startup-id teams
 # exec --no-startup-id thunderbird
 # exec --no-startup-id pidgin
