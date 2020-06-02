@@ -113,5 +113,7 @@ source ~/bin
 source /usr/local/bin/virtualenvwrapper.sh
 source /etc/zsh_command_not_found
 
-# OPENDDS
-source /home/gunsno/tmp/dds_32_2/deps/OpenDDS-3.12/setenv.sh
+# Local conf
+source ~/.zshrc.local
+
+export PATH=~/.npm-global/bin:$PATH

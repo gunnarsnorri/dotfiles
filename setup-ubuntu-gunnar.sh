@@ -89,6 +89,7 @@ ufw allow ssh
 
 # OTHER
 apt install gimp scrot -y
+apt install blueman
 
 
 echo "Now fix NFS, Davmail, mail, xmpp chat etc..."
