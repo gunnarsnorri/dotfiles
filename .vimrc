@@ -75,12 +75,12 @@ map <leader>y "*y
 map <leader>p "*p
 
 " vim-lsp
-if executable('clangd')
+if executable('clangd-9')
     augroup lsp_clangd
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
+                    \ 'name': 'clangd-9',
+                    \ 'cmd': {server_info->['clangd-9']},
                     \ 'whitelist': ['c', 'cpp', 'h', 'hpp'],
                     \ })
         autocmd FileType c setlocal omnifunc=lsp#complete

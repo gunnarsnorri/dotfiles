@@ -110,7 +110,6 @@ fi
 source ~/bin
 
 # VIRTUALENV
-source /usr/local/bin/virtualenvwrapper.sh
 source /etc/zsh_command_not_found
 
 # Local conf
