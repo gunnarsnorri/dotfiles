@@ -88,23 +88,23 @@ source $ZSH/oh-my-zsh.sh
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
-echo "Initializing new SSH agent..."
-/usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-echo succeeded
-chmod 600 "${SSH_ENV}"
-. "${SSH_ENV}" > /dev/null
-/usr/bin/ssh-add;
+    echo "Initializing new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
 }
 
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
-. "${SSH_ENV}" > /dev/null
-#ps ${SSH_AGENT_PID} doesn't work under cywgin
-ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-start_agent;
-}
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    start_agent;
+    }
 else
-start_agent;
+    start_agent;
 fi
 
 source ~/bin
@@ -113,6 +113,8 @@ source ~/bin
 source /etc/zsh_command_not_found
 
 # Local conf
-source ~/.zshrc.local
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
 
 export PATH=~/.npm-global/bin:$PATH

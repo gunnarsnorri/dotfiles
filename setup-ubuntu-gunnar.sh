@@ -13,11 +13,12 @@ fi
 ME=$(who | awk '{print $1}')
 
 # BASICS
-# su -c "mkdir -p $HOME/tmp $HOME/bin" $ME
-# wget https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2020.02.03_all.deb -o /tmp/keyring.deb
-# dpkg -i /tmp/keyring.deb
-# rm /tmp/keyring.deb
-# echo "deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe" > /etc/apt/sources.list.d/i3.list
+su -c "mkdir -p $HOME/tmp $HOME/bin" $ME
+/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2021.02.02_all.deb keyring.deb SHA256:cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
+dpkg -i ./keyring.deb
+rm ./keyring.deb
+echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" >> /etc/apt/sources.list.d/sur5r-i3.list
+
 apt update
 apt dist-upgrade -y
 apt install vim-gtk3 build-essential cmake python-dev python3-dev python3-pip curl -y
@@ -37,11 +38,11 @@ done
 # Python-mode
 su -c "git clone --recursive https://github.com/python-mode/python-mode $HOME/.vim/bundle/python-mode" $ME
 
-# YCM
-pushd ~/.vim/bundle/YouCompleteMe
-su -c "git submodule update --init --recursive" $ME
-su -c "./install.py --clang-completer" $ME
-popd
+# # YCM
+# pushd ~/.vim/bundle/YouCompleteMe
+# su -c "git submodule update --init --recursive" $ME
+# su -c "./install.py --clang-completer" $ME
+# popd
 
 # symbolic links
 su -c "ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc" $ME
@@ -70,15 +71,13 @@ popd
 
 
 # PIP
-apt install python-pip -y
 pip install --upgrade pip
-pip install virtualenv virtualenvwrapper
 
-# VIVALDI
-wget -qO - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
-echo "deb http://repo.vivaldi.com/stable/deb/ stable main" > /etc/apt/sources.list.d/vivaldi.list
-apt update
-apt install vivaldi-stable -y
+# # VIVALDI
+# wget -qO - http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
+# echo "deb http://repo.vivaldi.com/stable/deb/ stable main" > /etc/apt/sources.list.d/vivaldi.list
+# apt update
+# apt install vivaldi-stable -y
 
 # SSH
 apt install openssh-server -y
